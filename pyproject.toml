@@ -1,0 +1,15 @@
+[project]
+name = "gitwriter"
+version = "0.1.0"
+description = "Safe, metadata-only Git history rewriting"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+[project.scripts]
+gitwriter = "gitwriter.cli:main"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
