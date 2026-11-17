@@ -4,10 +4,22 @@
 
 ```python
 from gitwriter import GitWriter, ProposedEdit, RewritePlan
-w = GitWriter('.')
-root = w.snapshot('main').root
-plan = RewritePlan(root, [ProposedEdit(commit, 'author', 'New Name <new@example.com>', expected_old_value='Old Name <old@example.com>')])
-w.verify(plan, w.build(plan)); w.apply('main', plan)
+
+w = GitWriter(".")
+root = w.snapshot("main").root
+plan = RewritePlan(
+    root,
+    [
+        ProposedEdit(
+            commit,
+            "author",
+            "New Name <new@example.com>",
+            expected_old_value="Old Name <old@example.com>",
+        )
+    ],
+)
+w.verify(plan, w.build(plan))
+w.apply("main", plan)
 ```
 
 The CLI exposes `snapshot`, `propose`, `preview`, `build`, `verify`, and `apply`. Snapshots and plans are versioned JSON with one tabular-friendly record per commit. `preview` distinguishes unchanged, direct, and descendant rebuilds.
